@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
                 endPos.y += transform.position.y - PlayerFeet.position.y;
                 transform.position = new Vector3(transform.position.x, endPos.y, transform.position.z);
             }
+
+            rb.angularVelocity = Vector3.zero;
             if(UsingAnimations) animator.SetFloat(Speed, rb.linearVelocity.magnitude / MaxSpeed);
         }
     }
