@@ -11,6 +11,7 @@ namespace FondantMetStokjes.InteractionSystem
         [field: SerializeField] public bool CanInteract { get; set; } = true;
         [field: SerializeField] public float MaxInteractionRange { get; set; } = 30f;
         [field: SerializeField] public LayerMask InteractableLayer { get; set; }
+        public Ps4Controller Controller => input;
     
         private Ps4Controller input;
         private void Awake()
