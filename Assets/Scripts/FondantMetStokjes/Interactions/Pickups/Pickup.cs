@@ -10,7 +10,10 @@ namespace FondantMetStokjes.Interactions.Pickups
     
         public override void OnInteract(Interactor interactor)
         {
-            Debug.Log("Pickup!!");    
+            if (interactor.GetComponent<Inventory>().TryPickupItem(PickupItem))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
