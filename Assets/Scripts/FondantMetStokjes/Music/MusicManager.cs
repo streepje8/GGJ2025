@@ -8,6 +8,7 @@ namespace FondantMetStokjes.Music
     {
         public AudioClip clip;
         public bool waitForLoop;
+        public int stage;
         public float volume;
         public AudioSource Source { get; internal set; }
     }
@@ -16,7 +17,7 @@ namespace FondantMetStokjes.Music
     {
         public float volumeFadeSpeed = 1.0f;
         [SerializeField] Stem[] stems;
-        private int loops = 0;
+        private int stage = 0;
         private int previousSource0Time = 0;
         
         void Start()
@@ -40,7 +41,6 @@ namespace FondantMetStokjes.Music
             if (previousSource0Time > source0Time)
             {
                 // We're earlier in the song than previous frame. We looped!
-                loops++;
                 RefreshVolumes(true);
             }
             RefreshVolumes(false);
@@ -71,6 +71,18 @@ namespace FondantMetStokjes.Music
         public void SetVolume(int stem, float volume)
         {
             stems[stem].volume = volume;
+        }
+
+        public void AdvanceMusic()
+        {
+            stage++;
+            for (int i = 0; i < stems.Length; i++)
+            {
+                if (stems[i].stage <= stage)
+                {
+                    stems[i].volume = 1;
+                }
+            }
         }
     }
 }
