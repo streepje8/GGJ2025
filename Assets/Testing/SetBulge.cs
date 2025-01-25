@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class SetBulge : MonoBehaviour
 {
     public Material material;
