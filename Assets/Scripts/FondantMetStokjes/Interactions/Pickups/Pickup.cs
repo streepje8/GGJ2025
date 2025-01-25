@@ -9,10 +9,12 @@ namespace FondantMetStokjes.Interactions.Pickups
         [field: SerializeField] public GameObject DisplayObject { get; private set; }
         [field: SerializeField] public UnityEvent<Transform> OnPickup { get; private set; }
         [field: SerializeField] public UnityEvent OnDrop { get; private set; }
+        private Interactor currentInteractor;
         public override void OnInteract(Interactor interactor)
         {
             if (interactor.GetComponent<Inventory>().TryPickupItem(this, out Transform display))
             {
+                currentInteractor = interactor;
                 OnPickup.Invoke(display);
                 interactor.PlayPickupAnimation();
                 gameObject.SetActive(false);
@@ -35,6 +37,15 @@ namespace FondantMetStokjes.Interactions.Pickups
         {
             interactor.PlayDropAnimation();
             OnDrop.Invoke();
+        }
+
+        public void ResetDisplay()
+        {
+            if (currentInteractor != null)
+            {
+                currentInteractor.GetComponent<Inventory>().ResetDisplay(this, out var newDisplay);
+                OnPickup.Invoke(newDisplay);
+            }
         }
     }
 }

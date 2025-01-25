@@ -43,6 +43,7 @@ public class LiveBubble : MonoBehaviour
         Kind = newKind;
         rend.transform.localScale = Kind.Scale;
         bubbelMat.SetColor(Tint, Kind.Tint);
+        pickup.ResetDisplay();
     }
     
     private void OnDrop()

@@ -82,4 +82,14 @@ public class Inventory : MonoBehaviour
         inactivePickup.ForcePickup(GetComponent<Interactor>());
         return true;
     }
+
+    public void ResetDisplay(Pickup pickup, out Transform display)
+    {
+        Destroy(currentDisplay);
+        currentDisplay = null;
+        currentDisplay = Instantiate(pickup.DisplayObject);
+        display = currentDisplay.transform;
+        currentDisplay.transform.localPosition = Vector3.zero;
+        currentDisplay.transform.localRotation = Quaternion.identity;
+    }
 }
