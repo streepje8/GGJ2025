@@ -6,7 +6,7 @@ namespace FondantMetStokjes.InteractionSystem
     public abstract class Interactable : MonoBehaviour
     {
         [field: Header("Interactable Settings")]
-        [field: SerializeField] public float Range { get; protected set; } = 10f;
+        [field: SerializeField] public float Range { get; set; } = 10f;
         [field: SerializeField] public bool IsInteractable { get; set; } = true;
         [field: SerializeField] public IconGraphicData IconGraphics { get; protected set; }
     
@@ -62,7 +62,11 @@ namespace FondantMetStokjes.InteractionSystem
                     else graphicGameObj.gameObject.SetActive(false);
                 }
             }
+
+            InteractableUpdate();
         }
+
+        public virtual void InteractableUpdate() { }
 
         private void UpdateGraphicAnimation(float t)
         {
