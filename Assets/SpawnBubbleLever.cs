@@ -45,21 +45,21 @@ public class SpawnBubbleLever : Interactable
             T += Time.deltaTime / Duration;
             switch (T)
             {
-                case < 1f / 3f:
+                case <= 1.0f / 3.0f:
                 {
-                    var localT = BuldgeCurve.Evaluate(T / (1f / 3f));
+                    var localT = BuldgeCurve.Evaluate(Mathf.InverseLerp(0, 1f/3f, T));
                     BuldgePoint.position = Vector3.Lerp(PointA.position, PointB.position, localT);
                 }
                     break;
-                case > 1f / 3f and < 2f / 3f:
+                case > 1.0f / 3.0f and < 2.0f / 3.0f:
                 {
-                    var localT = BuldgeCurve.Evaluate(T - (1f/3f)) / (1f / 3f);
+                    var localT = BuldgeCurve.Evaluate(Mathf.InverseLerp(1f/3f, 2f/3f, T));
                     BuldgePoint.position = Vector3.Lerp(PointB.position, PointC.position, localT);
                 }
                     break;
-                case > 2f / 3f and < 1:
+                case > 2.0f / 3.0f and <= 1.0f:
                 {
-                    var localT = BuldgeCurve.Evaluate(T - (2f/3f)) / (1f / 3f);
+                    var localT = BuldgeCurve.Evaluate(Mathf.InverseLerp(2f/3f, 1.0f, T));
                     BuldgePoint.position = Vector3.Lerp(PointC.position, PointD.position, localT);
                 }
                     break;
