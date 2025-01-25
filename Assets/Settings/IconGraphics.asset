@@ -64,9 +64,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  <LeftStickIconTexture>k__BackingField: {fileID: 2800000, guid: 2ba9daedab899d444b47ed11f0502715, type: 3}
-  <RightStickIconTexture>k__BackingField: {fileID: 2800000, guid: 0aa10adfaabcdd347ad015325f0c0638, type: 3}
-  <TriangleButtonIconTexture>k__BackingField: {fileID: 2800000, guid: ddc93f0c376a3e2439d619998b64cffc, type: 3}
-  <CircleButtonIconTexture>k__BackingField: {fileID: 2800000, guid: 4dd5bd73f8958984e9888dd19c28f899, type: 3}
-  <CrossButtonIconTexture>k__BackingField: {fileID: 2800000, guid: a1fdbc2bfb800d644a7fb0b8f49415f5, type: 3}
-  <SquareButtonIconTexture>k__BackingField: {fileID: 2800000, guid: 226bcdd493f3be1489207c0aba125d4d, type: 3}
+  <LeftStickIconTexture>k__BackingField: {fileID: 2800000, guid: f59d9b0a55018424cbf5f689357fac0a, type: 3}
+  <RightStickIconTexture>k__BackingField: {fileID: 2800000, guid: 4e0ab7a3f4cadcf419457d79f07563c1, type: 3}
+  <TriangleButtonIconTexture>k__BackingField: {fileID: 2800000, guid: 84a8b22a61d48944da8da46701660bf2, type: 3}
+  <CircleButtonIconTexture>k__BackingField: {fileID: 2800000, guid: 069b86d2646953f47844b279cd3be216, type: 3}
+  <CrossButtonIconTexture>k__BackingField: {fileID: 2800000, guid: c67fc729630e6a04794cc21a09ea9f36, type: 3}
+  <SquareButtonIconTexture>k__BackingField: {fileID: 2800000, guid: bf576b986ac394041b44b004b43d5f11, type: 3}
