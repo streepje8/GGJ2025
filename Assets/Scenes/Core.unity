@@ -1628,7 +1628,7 @@ MonoBehaviour:
   <PointC>k__BackingField: {fileID: 1938927345}
   <PointD>k__BackingField: {fileID: 868403991}
   <LeverAnimator>k__BackingField: {fileID: 3121473492613467221}
-  <Duration>k__BackingField: 2
+  <Duration>k__BackingField: 1.5
 --- !u!135 &911439645
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2539,7 +2539,7 @@ MonoBehaviour:
   <PointD>k__BackingField: {fileID: 1477956286}
   <BubbleSpawnPoint>k__BackingField: {fileID: 1301381395}
   <LeverAnimator>k__BackingField: {fileID: 3121473492613467221}
-  <Duration>k__BackingField: 1
+  <Duration>k__BackingField: 1.5
 --- !u!135 &1542042170
 SphereCollider:
   m_ObjectHideFlags: 0

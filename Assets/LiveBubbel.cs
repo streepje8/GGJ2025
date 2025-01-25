@@ -62,4 +62,9 @@ public class LiveBubbel : MonoBehaviour
             }
         }
     }
+
+    public void MakeImmortal()
+    {
+        IsImmortal = true;
+    }
 }

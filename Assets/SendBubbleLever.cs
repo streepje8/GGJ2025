@@ -1,3 +1,4 @@
+using FondantMetStokjes.Interactions.Pickups;
 using FondantMetStokjes.InteractionSystem;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class SendBubbleLever : Interactable
     [field: SerializeField] public float Duration { get; private set; } = 2f;
     private bool isPlaying = false;
     private float T = 0f;
+    private LiveBubbel currentlyDisposing;
+    private Pickup currentlyDisposingPickup;
     public override void OnInteract(Interactor interactor)
     {
         LeverAnimator.SetTrigger(Lever);
@@ -25,8 +28,9 @@ public class SendBubbleLever : Interactable
                 var liveBubble = inv.CurrentlyHolding.GetComponent<LiveBubbel>();
                 if (liveBubble != null)
                 {
-                    GameManager.Instance.SubmitBubble(liveBubble.Kind);
-                    Destroy(inv.DropItem().gameObject);
+                    currentlyDisposingPickup = inv.DropItem();
+                    liveBubble.MakeImmortal();
+                    currentlyDisposing = liveBubble;
                     if (!isPlaying)
                     {
                         isPlaying = true;
@@ -48,6 +52,8 @@ public class SendBubbleLever : Interactable
                 {
                     var localT = BuldgeCurve.Evaluate(T / (1f / 3f));
                     BuldgePoint.position = Vector3.Lerp(PointA.position, PointB.position, localT);
+                    currentlyDisposing.transform.position = Vector3.Lerp(PointA.position, PointB.position, localT);
+                    currentlyDisposing.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 0.05f, localT);
                 }
                     break;
                 case > 1f / 3f and < 2f / 3f:
@@ -69,6 +75,8 @@ public class SendBubbleLever : Interactable
                 T = 0;
                 isPlaying = false;
                 BuldgePoint.position = PointA.position + Vector3.up * 10f;
+                GameManager.Instance.SubmitBubble(currentlyDisposing.Kind);
+                Destroy(currentlyDisposingPickup.gameObject);
             }
         }
     }
