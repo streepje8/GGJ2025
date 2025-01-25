@@ -71,12 +71,14 @@ namespace FondantMetStokjes.InteractionSystem
         public void StartInteraction(Interactor interactor)
         {
             interactor.SetInteractionAnimation(true);
+            CurrentInteractor = interactor;
             InInteraction = true;
         }
 
         public void EndInteraction()
         {
-            CurrentInteractor?.SetInteractionAnimation(false);
+            if(CurrentInteractor != null) CurrentInteractor.SetInteractionAnimation(false);
+            else Debug.LogWarning("Interaction was ended but none was started!");
             CurrentInteractor = null;
             InInteraction = false;
         }

@@ -73,12 +73,12 @@ public class SendBubbleLever : Interactable
 
             if (T >= 1)
             {
+                EndInteraction();
                 T = 0;
                 isPlaying = false;
                 BuldgePoint.position = PointA.position + Vector3.up * 10f;
                 GameManager.Instance.SubmitBubble(currentlyDisposing.Kind);
                 Destroy(currentlyDisposingPickup.gameObject);
-                EndInteraction();
             }
         }
     }

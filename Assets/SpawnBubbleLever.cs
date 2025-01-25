@@ -68,11 +68,11 @@ public class SpawnBubbleLever : Interactable
 
             if (T >= 1)
             {
+                EndInteraction();
                 Instantiate(LiveBubblePrefab, BubbleSpawnPoint.position, Quaternion.identity);
                 T = 0;
                 isPlaying = false;
                 BuldgePoint.position = PointA.position + Vector3.up * 10f;
-                EndInteraction();
             }
         }
     }
