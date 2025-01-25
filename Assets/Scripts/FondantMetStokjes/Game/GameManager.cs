@@ -29,4 +29,9 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void SubmitBubble(BubbleKind kind)
+    {
+        Debug.Log($"Submitted: {kind.Name}");
+    }
 }

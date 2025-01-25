@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b723f4ba3b74834ba2cf33a63361ab9, type: 3}
-  m_Name: Blank
+  m_Script: {fileID: 11500000, guid: cebc030e5ca545fd9c2994a66be15436, type: 3}
+  m_Name: LiveBubbelItem
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Blank Bubble
-  <Icon>k__BackingField: {fileID: 0}
-  <Tint>k__BackingField: {r: 2.670157, g: 2.670157, b: 2.670157, a: 1}
-  <Scale>k__BackingField: {x: 1, y: 1, z: 1}
+  HeldItem: {fileID: 0}
+  DroppedItem: {fileID: 0}
