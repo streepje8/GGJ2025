@@ -1,8 +1,8 @@
-// This shader draws a texture on the mesh.
 Shader "GGJ/GradientLighting"
 {
     Properties
     {
+        [HDR] _Tint("Bubble Tint", Color) = (1,1,1,1)
         _Power("IOR", Float) = 0
         _Specular("Specular", Range(0.0, 1.0)) = 0.95
         _Noise("Noise Texture", 2D) = "white"
@@ -49,6 +49,7 @@ Shader "GGJ/GradientLighting"
                 float4 _Noise_ST;
                 float _Specular;
                 float _Power;
+                float4 _Tint;
             CBUFFER_END
             
             Varyings vert(Attributes i)
@@ -77,7 +78,7 @@ Shader "GGJ/GradientLighting"
                 float specular = saturate((NdotL - _Specular) / (1.0f - _Specular));
                 //return float4(specular, specular, specular, 1);
                 half4 color = lerp(float4(1,1,1,0), SAMPLE_TEXTURE2D(_Noise, sampler_Noise, i.uv + float2(_Time.y, _Time.y * 0.2) * 0.1),valA);
-                return lerp(color, float4(1,1,1,1), saturate(specular));
+                return lerp(color, float4(1,1,1,1), saturate(specular)) * _Tint;
             }
             ENDHLSL
         }
