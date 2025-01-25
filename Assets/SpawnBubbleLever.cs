@@ -24,6 +24,7 @@ public class SpawnBubbleLever : Interactable
     {
         if (!isPlaying)
         {
+            StartInteraction(interactor);
             LeverAnimator.SetTrigger(Lever);
             isPlaying = true;
             T = 0f;
@@ -71,6 +72,7 @@ public class SpawnBubbleLever : Interactable
                 T = 0;
                 isPlaying = false;
                 BuldgePoint.position = PointA.position + Vector3.up * 10f;
+                EndInteraction();
             }
         }
     }

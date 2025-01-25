@@ -19,6 +19,7 @@ public class SendBubbleLever : Interactable
     private Pickup currentlyDisposingPickup;
     public override void OnInteract(Interactor interactor)
     {
+        StartInteraction(interactor);
         LeverAnimator.SetTrigger(Lever);
         var inv = interactor.GetComponent<Inventory>();
         if (inv != null)
@@ -77,6 +78,7 @@ public class SendBubbleLever : Interactable
                 BuldgePoint.position = PointA.position + Vector3.up * 10f;
                 GameManager.Instance.SubmitBubble(currentlyDisposing.Kind);
                 Destroy(currentlyDisposingPickup.gameObject);
+                EndInteraction();
             }
         }
     }

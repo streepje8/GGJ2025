@@ -67,15 +67,17 @@ namespace FondantMetStokjes.InteractionSystem
         }
 
         public bool InInteraction { get; private set; }
+        public Interactor CurrentInteractor { get; private set; }
         public void StartInteraction(Interactor interactor)
         {
             interactor.SetInteractionAnimation(true);
             InInteraction = true;
         }
 
-        public void EndInteraction(Interactor interactor)
+        public void EndInteraction()
         {
-            interactor.SetInteractionAnimation(false);
+            CurrentInteractor?.SetInteractionAnimation(false);
+            CurrentInteractor = null;
             InInteraction = false;
         }
         
