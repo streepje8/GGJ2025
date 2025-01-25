@@ -1,70 +1,76 @@
+using System;
 using UnityEngine;
 
 namespace FondantMetStokjes.Music
 {
+    [Serializable]
+    public struct Stem
+    {
+        public AudioClip clip;
+        public bool waitForLoop;
+        public float volume;
+        public AudioSource Source { get; internal set; }
+    }
+    
     public class MusicManager : MonoBehaviour
     {
-        [SerializeField] AudioClip[] stems;
-        [SerializeField] float[] volumes;
-        private AudioSource[] sources;
-
-        void OnValidate()
-        {
-            if (volumes.Length != stems.Length)
-            {
-                float[] old = volumes;
-                volumes = new float[stems.Length];
-                for (int i = 0; i < Mathf.Min(old.Length, volumes.Length); i++)
-                {
-                    volumes[i] = old[i];
-                }
-
-                if (old.Length < volumes.Length)
-                {
-                    for (int i = old.Length; i < volumes.Length; i++)
-                    {
-                        volumes[i] = volumes[i - 1];
-                    }
-                }
-            }
-
-            for (int i = 0; i < volumes.Length; i++)
-            {
-                volumes[i] = Mathf.Clamp01(volumes[i]);
-            }
-        }
+        public float volumeFadeSpeed = 1.0f;
+        [SerializeField] Stem[] stems;
+        private int loops = 0;
+        private int previousSource0Time = 0;
         
         void Start()
         {
-            sources = new AudioSource[stems.Length];
             for (int i = 0; i < stems.Length; i++)
             {
                 GameObject stemObject = new GameObject("Source " + i, typeof(AudioSource));
                 stemObject.transform.parent = transform;
-                sources[i] = stemObject.GetComponent<AudioSource>();
-                sources[i].clip = stems[i];
-                sources[i].loop = true;
-                sources[i].Play();
+                stems[i].Source = stemObject.GetComponent<AudioSource>();
+                stems[i].Source.clip = stems[i].clip;
+                stems[i].Source.loop = true;
+                stems[i].Source.volume = stems[i].volume;
+                stems[i].Source.Play();
             }
+            RefreshVolumes(true);
         }
 
         void Update()
         {
-            RefreshVolumes();
+            int source0Time = stems[0].Source.timeSamples;
+            if (previousSource0Time > source0Time)
+            {
+                // We're earlier in the song than previous frame. We looped!
+                loops++;
+                RefreshVolumes(true);
+            }
+            RefreshVolumes(false);
+        
+            previousSource0Time = source0Time;
+        }
+
+        public void RefreshVolumes(bool loop)
+        {
+            for (int i = 0; i < stems.Length; i++)
+            {
+                if (stems[i].waitForLoop)
+                {
+                    if (loop)
+                    {
+                        stems[i].Source.volume = stems[i].volume;
+                    }
+                }
+                else
+                {
+                    float targetVolume = stems[i].volume;
+                    float fadeSpeed = volumeFadeSpeed * Time.deltaTime;
+                    stems[i].Source.volume = Mathf.MoveTowards(stems[i].Source.volume, targetVolume,fadeSpeed);
+                }
+            }
         }
 
         public void SetVolume(int stem, float volume)
         {
-            volumes[stem] = volume;
-            sources[stem].volume = volume;
-        }
-
-        public void RefreshVolumes()
-        {
-            for (int i = 0; i < sources.Length; i++)
-            {
-                sources[i].volume = volumes[i];
-            }
+            stems[stem].volume = volume;
         }
     }
 }

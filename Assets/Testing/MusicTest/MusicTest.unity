@@ -164,23 +164,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stems:
-  - {fileID: 8300000, guid: 41a830001ee15264283a3244ac7cdf6c, type: 3}
-  - {fileID: 8300000, guid: 3a2ace6798e33fd4a8b420d180354e2e, type: 3}
-  - {fileID: 8300000, guid: 08e7a4a3f70a1414ea716e52b46d345f, type: 3}
-  - {fileID: 8300000, guid: d13a3ebaddae42548a6854d1f4b70243, type: 3}
-  - {fileID: 8300000, guid: a80a14f9cb8a5554eacf9a37a1d2f2a1, type: 3}
-  - {fileID: 8300000, guid: 5adc7afd5188ede4d879b77ad2c74e47, type: 3}
-  - {fileID: 8300000, guid: 9b332fffb06f1ea4b8cc522db55f0a53, type: 3}
-  - {fileID: 8300000, guid: 2f0bdb6c3012eb64ca36ff79ff8e3108, type: 3}
-  volumes:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 0
+  - clip: {fileID: 8300000, guid: 41a830001ee15264283a3244ac7cdf6c, type: 3}
+    waitForLoop: 0
+    volume: 1
+  - clip: {fileID: 8300000, guid: 3a2ace6798e33fd4a8b420d180354e2e, type: 3}
+    waitForLoop: 0
+    volume: 0
+  - clip: {fileID: 8300000, guid: 08e7a4a3f70a1414ea716e52b46d345f, type: 3}
+    waitForLoop: 0
+    volume: 0
+  - clip: {fileID: 8300000, guid: d13a3ebaddae42548a6854d1f4b70243, type: 3}
+    waitForLoop: 0
+    volume: 0
+  - clip: {fileID: 8300000, guid: a80a14f9cb8a5554eacf9a37a1d2f2a1, type: 3}
+    waitForLoop: 0
+    volume: 0
+  - clip: {fileID: 8300000, guid: 5adc7afd5188ede4d879b77ad2c74e47, type: 3}
+    waitForLoop: 0
+    volume: 0
+  - clip: {fileID: 8300000, guid: 9b332fffb06f1ea4b8cc522db55f0a53, type: 3}
+    waitForLoop: 0
+    volume: 0
+  - clip: {fileID: 8300000, guid: 2f0bdb6c3012eb64ca36ff79ff8e3108, type: 3}
+    waitForLoop: 1
+    volume: 0
 --- !u!1 &1199715780
 GameObject:
   m_ObjectHideFlags: 0
