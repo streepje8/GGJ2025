@@ -15,7 +15,7 @@ public class SendBubbleLever : Interactable
     [field: SerializeField] public float Duration { get; private set; } = 2f;
     private bool isPlaying = false;
     private float T = 0f;
-    private LiveBubbel currentlyDisposing;
+    private LiveBubble currentlyDisposing;
     private Pickup currentlyDisposingPickup;
     public override void OnInteract(Interactor interactor)
     {
@@ -26,7 +26,7 @@ public class SendBubbleLever : Interactable
         {
             if (inv.CurrentlyHolding != null)
             {
-                var liveBubble = inv.CurrentlyHolding.GetComponent<LiveBubbel>();
+                var liveBubble = inv.CurrentlyHolding.GetComponent<LiveBubble>();
                 if (liveBubble != null)
                 {
                     currentlyDisposingPickup = inv.DropItem();

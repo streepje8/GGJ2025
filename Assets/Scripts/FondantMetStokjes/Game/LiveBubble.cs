@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Pickup))]
-public class LiveBubbel : MonoBehaviour
+public class LiveBubble : MonoBehaviour
 {
     private static readonly int Tint = Shader.PropertyToID("_Tint");
     [field: SerializeField]public bool IsImmortal { get; private set; } = true;

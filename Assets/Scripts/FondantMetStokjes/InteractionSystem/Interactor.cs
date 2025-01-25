@@ -73,15 +73,15 @@ namespace FondantMetStokjes.InteractionSystem
             Gizmos.DrawWireSphere(transform.position, MaxInteractionRange);
         }
 
-        public bool TryTakeBubble(out LiveBubbel result)
+        public bool TryTakeBubble(out LiveBubble result)
         {
             result = null;
             if (!inventory.IsHoldingSomething) return false;
-            result = inventory.TakeItem().GetComponent<LiveBubbel>();
+            result = inventory.TakeItem().GetComponent<LiveBubble>();
             return true;
         }
 
-        public bool TryGiveBubble(LiveBubbel bubble)
+        public bool TryGiveBubble(LiveBubble bubble)
         {
             return bubble.GetComponent<Pickup>().ForcePickup(this);
         }
