@@ -1,4 +1,4 @@
-Shader "GGJ/GradientLighting"
+Shader "GGJ/Bubble"
 {
     Properties
     {
