@@ -7,6 +7,10 @@ namespace FondantMetStokjes.InteractionSystem
     [RequireComponent(typeof(InputWrapper))]
     public class Interactor : MonoBehaviour
     {
+        private static readonly int Pickup = Animator.StringToHash("Pickup");
+        private static readonly int Drop = Animator.StringToHash("Drop");
+        private static readonly int Interacting = Animator.StringToHash("Interacting");
+
         [field: Header("Interactor Settings")]
         [field: SerializeField] public bool CanInteract { get; set; } = true;
         [field: SerializeField] public float MaxInteractionRange { get; set; } = 30f;
@@ -14,11 +18,15 @@ namespace FondantMetStokjes.InteractionSystem
         public Ps4Controller Controller => input;
     
         private Ps4Controller input;
+        private Animator animator;
         private void Awake()
         {
             input = GetComponent<InputWrapper>().CurrentController;
+            animator = GetComponentInChildren<Animator>(true);
         }
 
+        
+        
         private Dictionary<Collider, Interactable> interactableCache = new Dictionary<Collider, Interactable>();
         private Collider[] colliders = new Collider[10];
         private void Update()
@@ -41,7 +49,7 @@ namespace FondantMetStokjes.InteractionSystem
                         continue;
                     }
                 
-                    if (interactable.IsInteractable)
+                    if (interactable.IsInteractable && !interactable.InInteraction)
                     {
                         var dst = Vector3.Distance(interactable.transform.position, transform.position);
                         if (dst < interactable.Range)
@@ -58,6 +66,21 @@ namespace FondantMetStokjes.InteractionSystem
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(transform.position, MaxInteractionRange);
+        }
+
+        public void PlayPickupAnimation()
+        {
+            animator.SetTrigger(Pickup);
+        }
+        
+        public void PlayDropAnimation()
+        {
+            animator.SetTrigger(Drop);
+        }
+
+        public void SetInteractionAnimation(bool interacting)
+        {
+            animator.SetBool(Interacting, interacting);
         }
     }
 }

@@ -66,6 +66,19 @@ namespace FondantMetStokjes.InteractionSystem
             InteractableUpdate();
         }
 
+        public bool InInteraction { get; private set; }
+        public void StartInteraction(Interactor interactor)
+        {
+            interactor.SetInteractionAnimation(true);
+            InInteraction = true;
+        }
+
+        public void EndInteraction(Interactor interactor)
+        {
+            interactor.SetInteractionAnimation(false);
+            InInteraction = false;
+        }
+        
         public virtual void InteractableUpdate() { }
 
         private void UpdateGraphicAnimation(float t)

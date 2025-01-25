@@ -1,5 +1,6 @@
 ﻿using System;
 using FondantMetStokjes.Interactions.Pickups;
+using FondantMetStokjes.InteractionSystem;
 using FondantMetStokjes.Player;
 using UnityEngine;
 
@@ -42,7 +43,7 @@ public class Inventory : MonoBehaviour
         var pickup = CurrentlyHolding;
         CurrentlyHolding.transform.position = HoldingPoint.position;
         CurrentlyHolding.gameObject.SetActive(true);
-        CurrentlyHolding.NotifyDropped();
+        CurrentlyHolding.NotifyDropped(GetComponent<Interactor>());
         Destroy(currentDisplay);
         currentDisplay = null;
         CurrentlyHolding = null;
