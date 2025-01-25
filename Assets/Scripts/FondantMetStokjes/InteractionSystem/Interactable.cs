@@ -68,7 +68,7 @@ namespace FondantMetStokjes.InteractionSystem
         {
             graphicGameObj.localPosition = Vector3.Lerp(Vector3.zero, IconGraphics.IconOffset, IconGraphics.OffsetAnimation.Evaluate(t));
             graphicGameObj.localScale = Vector3.Lerp(Vector3.zero, IconGraphics.IconScale, IconGraphics.ScaleAnimation.Evaluate(t));
-            graphicGameObj.rotation = Quaternion.LookRotation(graphicGameObj.transform.position - Vector3.forward * 10.0f - Vector3.up, Vector3.up);
+            graphicGameObj.rotation = Quaternion.LookRotation((new Vector3(0,1,-10)-graphicGameObj.transform.position).normalized, Vector3.up);
         }
 
         private void OnDrawGizmosSelected()

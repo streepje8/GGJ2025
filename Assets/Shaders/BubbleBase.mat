@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestMaterial
-  m_Shader: {fileID: 4800000, guid: 78a8f794689266c4b991f81df0dc29ab, type: 3}
+  m_Name: BubbleBase
+  m_Shader: {fileID: 4800000, guid: d3452eccd27ddfc43a3380f99850a78b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,12 +23,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Gradient:
-        m_Texture: {fileID: 2800000, guid: baf019b8a4a4c32468bca39e7aaf08f9, type: 3}
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: 20c59bf96672b0746a5fc1bc9d3a09ac, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Power: 2.05
+    - _Specular: 0.95
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
