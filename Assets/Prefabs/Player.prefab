@@ -15968,6 +15968,7 @@ GameObject:
   - component: {fileID: 998007625929927571}
   - component: {fileID: 4529463025651975686}
   - component: {fileID: 4774247354683147784}
+  - component: {fileID: 655749089885457884}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -16049,8 +16050,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxSpeed>k__BackingField: 10
-  <Acceleration>k__BackingField: 10
-  <Deceleration>k__BackingField: 10
+  <Acceleration>k__BackingField: 6
+  <Deceleration>k__BackingField: 6
   <ConserveMomentum>k__BackingField: 1
   <Ground>k__BackingField:
     serializedVersion: 2
@@ -16084,6 +16085,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!114 &655749089885457884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667214425734753922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2182344826d1a9c41b377f36c98db454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CanInteract>k__BackingField: 1
+  <MaxInteractionRange>k__BackingField: 5
+  <InteractableLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &6683025833229042575
 GameObject:
   m_ObjectHideFlags: 0
