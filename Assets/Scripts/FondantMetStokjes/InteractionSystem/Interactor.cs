@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using FondantMetStokjes.Interactions.Pickups;
 using FondantMetStokjes.Player;
 using UnityEngine;
 
 namespace FondantMetStokjes.InteractionSystem
 {
     [RequireComponent(typeof(InputWrapper))]
+    [RequireComponent(typeof(PlayerController))]
+    [RequireComponent(typeof(Inventory))]
     public class Interactor : MonoBehaviour
     {
         private static readonly int Pickup = Animator.StringToHash("Pickup");
@@ -19,13 +22,15 @@ namespace FondantMetStokjes.InteractionSystem
     
         private Ps4Controller input;
         private Animator animator;
+        private PlayerController playerController;
+        private Inventory inventory;
         private void Awake()
         {
             input = GetComponent<InputWrapper>().CurrentController;
             animator = GetComponentInChildren<Animator>(true);
+            playerController = GetComponent<PlayerController>();
+            inventory = GetComponent<Inventory>();
         }
-
-        
         
         private Dictionary<Collider, Interactable> interactableCache = new Dictionary<Collider, Interactable>();
         private Collider[] colliders = new Collider[10];
@@ -68,6 +73,20 @@ namespace FondantMetStokjes.InteractionSystem
             Gizmos.DrawWireSphere(transform.position, MaxInteractionRange);
         }
 
+        public bool TryTakeBubble(out LiveBubbel result)
+        {
+            result = null;
+            if (!inventory.IsHoldingSomething) return false;
+            result = inventory.TakeItem().GetComponent<LiveBubbel>();
+            return true;
+        }
+
+        public bool TryGiveBubble(LiveBubbel bubble)
+        {
+            return bubble.GetComponent<Pickup>().ForcePickup(this);
+        }
+        
+
         public void PlayPickupAnimation()
         {
             animator.SetTrigger(Pickup);
@@ -80,6 +99,7 @@ namespace FondantMetStokjes.InteractionSystem
 
         public void SetInteractionAnimation(bool interacting)
         {
+            playerController.Active = !interacting;
             animator.SetBool(Interacting, interacting);
         }
     }

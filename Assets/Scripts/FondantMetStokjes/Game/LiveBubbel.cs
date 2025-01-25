@@ -15,9 +15,10 @@ public class LiveBubbel : MonoBehaviour
 
     private Pickup pickup;
     private Material bubbelMat;
+    private Renderer rend;
     private void Awake()
     {
-        var rend = GetComponentInChildren<Renderer>(true);
+        rend = GetComponentInChildren<Renderer>(true);
         bubbelMat = new Material(rend.material);
         rend.sharedMaterial = bubbelMat;
         rend.transform.localScale = Kind.Scale;
@@ -35,6 +36,13 @@ public class LiveBubbel : MonoBehaviour
     {
         pickup.OnPickup.RemoveListener(OnPickup);
         pickup.OnDrop.RemoveListener(OnDrop);
+    }
+
+    public void SwitchKind(BubbleKind newKind)
+    {
+        Kind = newKind;
+        rend.transform.localScale = Kind.Scale;
+        bubbelMat.SetColor(Tint, Kind.Tint);
     }
     
     private void OnDrop()

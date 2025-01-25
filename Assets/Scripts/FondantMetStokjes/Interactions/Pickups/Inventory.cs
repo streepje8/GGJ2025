@@ -64,4 +64,22 @@ public class Inventory : MonoBehaviour
         display = null;
         return false;
     }
+
+    public Pickup TakeItem() //Takes the item without activating it
+    {
+        var pickup = CurrentlyHolding;
+        CurrentlyHolding.transform.position = HoldingPoint.position;
+        CurrentlyHolding.NotifyDropped(GetComponent<Interactor>());
+        Destroy(currentDisplay);
+        currentDisplay = null;
+        CurrentlyHolding = null;
+        return pickup;
+    }
+
+    public bool TryGiveItem(Pickup inactivePickup) //Gives an inactive pickup without activating it
+    {
+        if (IsHoldingSomething) return false;
+        inactivePickup.ForcePickup(GetComponent<Interactor>());
+        return true;
+    }
 }

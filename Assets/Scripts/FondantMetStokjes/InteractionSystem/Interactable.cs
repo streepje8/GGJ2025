@@ -21,7 +21,6 @@ namespace FondantMetStokjes.InteractionSystem
         private float graphicT = 0;
         private bool graphicEnabled = false;
         private Transform graphicGameObj;
-
         private void Awake()
         {
             if (IconGraphics != null) graphicEnabled = true;

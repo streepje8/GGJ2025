@@ -19,6 +19,18 @@ namespace FondantMetStokjes.Interactions.Pickups
             }
         }
 
+        public bool ForcePickup(Interactor interactor)
+        {
+            if (interactor.GetComponent<Inventory>().TryPickupItem(this, out Transform display))
+            {
+                OnPickup.Invoke(display);
+                interactor.PlayPickupAnimation();
+                gameObject.SetActive(false);
+                return true;
+            }
+            return false;
+        }
+
         public void NotifyDropped(Interactor interactor)
         {
             interactor.PlayDropAnimation();
