@@ -64,7 +64,8 @@ namespace FondantMetStokjes.Player
                 }
 
                 rb.angularVelocity = Vector3.zero;
-                if(UsingAnimations) animator.SetFloat(Speed, rb.linearVelocity.magnitude / MaxSpeed);
+                var speed01 = rb.linearVelocity.magnitude / MaxSpeed;
+                if(UsingAnimations) animator.SetFloat(Speed, speed01);
             }
         }
     }

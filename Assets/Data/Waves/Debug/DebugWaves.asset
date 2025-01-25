@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cebc030e5ca545fd9c2994a66be15436, type: 3}
-  m_Name: MainMenuBubble
+  m_Script: {fileID: 11500000, guid: 14c2319398bd45118c2deb57154625c2, type: 3}
+  m_Name: DebugWaves
   m_EditorClassIdentifier: 
-  HeldItem: {fileID: 0}
-  DroppedItem: {fileID: 0}
+  <Waves>k__BackingField:
+  - {fileID: 11400000, guid: 80ef2cb1f319a0a4dbf0edd75287998a, type: 2}

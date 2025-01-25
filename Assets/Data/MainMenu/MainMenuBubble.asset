@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebc030e5ca545fd9c2994a66be15436, type: 3}
+  m_Name: MainMenuBubble
+  m_EditorClassIdentifier: 
+  HeldItem: {fileID: 1104436657142264947, guid: 069bab889e99b954298cefa3231e07b6, type: 3}
+  DroppedItem: {fileID: 6909620128797233858, guid: b2ecb233512df61468b05e54d0cd0f78, type: 3}

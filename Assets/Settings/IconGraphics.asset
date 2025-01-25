@@ -15,7 +15,7 @@ MonoBehaviour:
   <AnimationDuration>k__BackingField: 0.1
   <IconObject>k__BackingField: {fileID: 6121804736422762, guid: 1620a3b446817884983a06713598976a, type: 3}
   <IconOffset>k__BackingField: {x: 0, y: 1.2, z: 0}
-  <IconScale>k__BackingField: {x: 0.75, y: 0.75, z: 0.75}
+  <IconScale>k__BackingField: {x: 0.5, y: 0.5, z: 0.5}
   <OffsetAnimation>k__BackingField:
     serializedVersion: 2
     m_Curve:
