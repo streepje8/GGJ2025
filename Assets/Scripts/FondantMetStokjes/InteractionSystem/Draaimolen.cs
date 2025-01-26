@@ -20,8 +20,6 @@ public class Draaimolen : Interactable
         turningCooldown = 0.2f;
         totalTimer = 0f;
         display = Instantiate(displayModel);
-        display.transform.localPosition = new Vector3(-0.329f,-0.043f,-0.619f);
-        display.transform.SetParent(bone, true);
         bubble.ToRenderer(display);
     }
 
@@ -38,6 +36,8 @@ public class Draaimolen : Interactable
             turningCooldown = 0.2f;
             lastJoystick = input;
         }
+        
+        display.transform.position = bone.transform.position + new Vector3(-0.272000015f,-0.294999987f-0.504000008f);
         
         if (turningCooldown > 0)
         {

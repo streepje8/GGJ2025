@@ -736,6 +736,7 @@ MonoBehaviour:
   <RequireBubble>k__BackingField: 1
   displayModel: {fileID: 5277914001771173676, guid: 069bab889e99b954298cefa3231e07b6, type: 3}
   spinnedKind: {fileID: 11400000, guid: 9b8a519e7bb4fff4ab50d2ee2c6aec61, type: 2}
+  bone: {fileID: 1434325143226704764}
   spinningTime: 2
 --- !u!1 &226018156
 GameObject:
