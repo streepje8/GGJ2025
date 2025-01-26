@@ -22,7 +22,7 @@ public class MenuOption : MonoBehaviour
                 GameManager.Instance.StartGame();
                 break;
             case MenuOptions.Credits:
-                Debug.Log("Credits!!");
+                GameObject.Find("Balzak").transform.GetChild(0).gameObject.SetActive(true);
                 break;
             case MenuOptions.Quit:
                 Application.Quit();
