@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FondantMetStokjes.Music;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;
@@ -15,6 +16,21 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public GameObject RequestPrefab { get; private set; }
     [field: SerializeField] public Transform RequestPrefabParent { get; private set; }
     public static GameManager Instance { get; private set; }
+
+    public GameObject GameObj;
+    public GameObject LScreen;
+    public TMP_Text ScoreText;
+
+    private void Update()
+    {
+        if (GameState.Wave > 0 && GameState.Lives <= 0)
+        {
+            ScoreText.text = $"Score: {GameState.Score}";
+            GameObj.SetActive(false);
+            LScreen.SetActive(true);
+        }
+    }
+
     public int playerCount { get; private set; } = 0;
     private void Awake()
     {
