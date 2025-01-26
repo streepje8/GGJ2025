@@ -166,13 +166,20 @@ public class RequestManager
             ActiveRequests.Remove(toDelete);
             Object.Destroy(toDelete.gameObject);
             Debug.Log("100 Points.");
-            //Award 100 Points
+            GameManager.Instance.GameState.Score += 100;
         }
         else
         {
             Debug.Log("5 Points.");
-            //Award 5 Points.
+            GameManager.Instance.GameState.Score += 5;
         }
+    }
+
+    public void RequestLost(Request request)
+    {
+        ActiveRequests.Remove(request);
+        Object.Destroy(request.gameObject);
+        GameManager.Instance.GameState.Lives--;
     }
 }
 

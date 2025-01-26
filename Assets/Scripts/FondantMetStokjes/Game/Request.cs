@@ -19,9 +19,9 @@ public class Request : MonoBehaviour
     private Material mat;
     public void Activate()
     {
-        t = 0;
         mat = new Material(background.material);
         background.material = mat;
+        duration = 20;
         switch (GameManager.Instance.GameState.Difficulty)
         {
             case < 2:
@@ -37,11 +37,13 @@ public class Request : MonoBehaviour
                 duration = 10;
                 break;
         }
+        t = 0;
     }
 
     private void Update()
     {
         t += Time.deltaTime / duration;
         mat.SetFloat(Progress,t);
+        if (t >= 1) GameManager.Instance.RequestManager.RequestLost(this);
     }
 }
