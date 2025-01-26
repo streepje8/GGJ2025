@@ -35,6 +35,6 @@ Material:
     m_Floats:
     - _Progress: 0
     m_Colors:
-    - _Fill: {r: 1, g: 0, b: 0, a: 1}
+    - _Fill: {r: 0.90188676, g: 0.26375923, b: 0.26375923, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
