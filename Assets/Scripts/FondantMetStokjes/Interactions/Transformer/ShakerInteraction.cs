@@ -2,13 +2,14 @@ using FondantMetStokjes.Interactions.Pickups;
 using FondantMetStokjes.InteractionSystem;
 using FondantMetStokjes.Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ShakerInteraction : Interactable
 {
-    public GameObject model;
+    private static readonly int Shake = Animator.StringToHash("Shake");
+    public Animator model;
     public int sideChangesBeforeWin = 20;
-    public float temporaryLmaoSpeedMod = 1.0f;
-    public float temporaryLmaoMagnitudeMod = 1.0f;
+    [FormerlySerializedAs("temporaryLmaoSpeedMod")] public float permanentLmaoSpeedMod = 1.0f;
     public BubbleKind bubbleKind;
     private LiveBubble bubble = null;
     enum State
@@ -36,7 +37,10 @@ public class ShakerInteraction : Interactable
     public override void InteractableUpdate()
     {
         if (!InInteraction)
+        {
+            model.SetFloat(Shake, 0);
             return;
+        }
         Ps4Controller controller = CurrentInteractor.Controller;
         float JoystickY = controller.RightStick.y;
         
@@ -58,7 +62,8 @@ public class ShakerInteraction : Interactable
             {
                 animationSpeed = 1.0f / timeSinceSideChange;
             }
-            model.transform.localPosition = Vector3.up * (Mathf.Sin(Time.time * animationSpeed * temporaryLmaoSpeedMod) * temporaryLmaoMagnitudeMod);
+            model.SetFloat(Shake, 1);
+            model.speed = animationSpeed * permanentLmaoSpeedMod;
         }
 
         timeSinceSideChange += Time.deltaTime;
