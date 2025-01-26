@@ -9,6 +9,7 @@ public class ShakerInteraction : Interactable
     public Animator model;
     public int sideChangesBeforeWin = 20;
     [FormerlySerializedAs("temporaryLmaoSpeedMod")] public float permanentLmaoSpeedMod = 1.0f;
+    public SfxClip tumbleClip;
     public BubbleKind bubbleKind;
     private LiveBubble bubble = null;
     enum State
@@ -48,11 +49,13 @@ public class ShakerInteraction : Interactable
             state = State.Down;
             timeSinceSideChange = 0;
             sideChanges++;
+            SfxManager.instance.SpawnSound(tumbleClip, transform.position);
         } else if (state != State.Up && JoystickY >= upDownZone)
         {
             state = State.Up;
             timeSinceSideChange = 0;
             sideChanges++;
+            SfxManager.instance.SpawnSound(tumbleClip, transform.position);
         }
 
         if (state != State.Start)
