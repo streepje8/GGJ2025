@@ -81,9 +81,9 @@ namespace FondantMetStokjes.InteractionSystem
             return true;
         }
 
-        public bool TryGiveBubble(LiveBubble bubble)
+        public void GiveBubble(LiveBubble bubble)
         {
-            return bubble.GetComponent<Pickup>().ForcePickup(this);
+            bubble.GetComponent<Pickup>().ForcePickup(this);
         }
         
 
@@ -101,6 +101,11 @@ namespace FondantMetStokjes.InteractionSystem
         {
             playerController.Active = !interacting;
             animator.SetBool(Interacting, interacting);
+        }
+
+        public Inventory GetInventory()
+        {
+            return inventory;
         }
     }
 }

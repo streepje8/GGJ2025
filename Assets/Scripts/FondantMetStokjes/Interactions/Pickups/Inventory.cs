@@ -10,7 +10,6 @@ public class Inventory : MonoBehaviour
     private static readonly int IsHolding = Animator.StringToHash("IsHolding");
     [field: SerializeField] public Transform HoldingPoint { get; private set; }
     public Pickup CurrentlyHolding { get; private set; }
-    public BubbleKind CurrentKind { get; private set; }
     public bool IsHoldingSomething => CurrentlyHolding != null;
     private GameObject currentDisplay;
     private Ps4Controller input;
@@ -55,7 +54,9 @@ public class Inventory : MonoBehaviour
         if (!IsHoldingSomething)
         {
             CurrentlyHolding = pickup;
-            currentDisplay = Instantiate(pickup.DisplayObject);
+            Destroy(currentDisplay);
+            currentDisplay = null;
+            currentDisplay = Instantiate(pickup.BaseDisplayObject);
             display = currentDisplay.transform;
             currentDisplay.transform.localPosition = Vector3.zero;
             currentDisplay.transform.localRotation = Quaternion.identity;
@@ -76,18 +77,17 @@ public class Inventory : MonoBehaviour
         return pickup;
     }
 
-    public bool TryGiveItem(Pickup inactivePickup) //Gives an inactive pickup without activating it
+    public void ForcePickupItem(Pickup pickup, out Transform display)
     {
-        if (IsHoldingSomething) return false;
-        inactivePickup.ForcePickup(GetComponent<Interactor>());
-        return true;
-    }
+        if (IsHoldingSomething)
+        {
+            DropItem();
+        }
 
-    public void ResetDisplay(Pickup pickup, out Transform display)
-    {
+        CurrentlyHolding = pickup;
         Destroy(currentDisplay);
         currentDisplay = null;
-        currentDisplay = Instantiate(pickup.DisplayObject);
+        currentDisplay = Instantiate(pickup.BaseDisplayObject);
         display = currentDisplay.transform;
         currentDisplay.transform.localPosition = Vector3.zero;
         currentDisplay.transform.localRotation = Quaternion.identity;

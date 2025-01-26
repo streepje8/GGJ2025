@@ -1,3 +1,4 @@
+using System;
 using FondantMetStokjes.InteractionSystem;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,46 +7,34 @@ namespace FondantMetStokjes.Interactions.Pickups
 {
     public class Pickup : Interactable
     {
-        [field: SerializeField] public GameObject DisplayObject { get; private set; }
-        [field: SerializeField] public UnityEvent<Transform> OnPickup { get; private set; }
-        [field: SerializeField] public UnityEvent OnDrop { get; private set; }
+        [field: SerializeField] public GameObject BaseDisplayObject { get; private set; }
+        public event Action<Transform> OnPickup;
+        public event Action OnDrop;
         private Interactor currentInteractor;
         public override void OnInteract(Interactor interactor)
         {
             if (interactor.GetComponent<Inventory>().TryPickupItem(this, out Transform display))
             {
                 currentInteractor = interactor;
-                OnPickup.Invoke(display);
+                if(OnPickup!=null) OnPickup(display);
                 interactor.PlayPickupAnimation();
                 gameObject.SetActive(false);
             }
         }
 
-        public bool ForcePickup(Interactor interactor)
+        public void ForcePickup(Interactor interactor)
         {
-            if (interactor.GetComponent<Inventory>().TryPickupItem(this, out Transform display))
-            {
-                OnPickup.Invoke(display);
-                interactor.PlayPickupAnimation();
-                gameObject.SetActive(false);
-                return true;
-            }
-            return false;
+            interactor.GetComponent<Inventory>().ForcePickupItem(this, out Transform display);
+            currentInteractor = interactor;
+            if(OnPickup!=null) OnPickup(display);
+            interactor.PlayPickupAnimation();
+            gameObject.SetActive(false);
         }
 
         public void NotifyDropped(Interactor interactor)
         {
             interactor.PlayDropAnimation();
-            OnDrop.Invoke();
-        }
-
-        public void ResetDisplay()
-        {
-            if (currentInteractor != null)
-            {
-                currentInteractor.GetComponent<Inventory>().ResetDisplay(this, out var newDisplay);
-                OnPickup.Invoke(newDisplay);
-            }
+            if(OnDrop != null) OnDrop();
         }
     }
 }

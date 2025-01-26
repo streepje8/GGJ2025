@@ -157,13 +157,7 @@ MonoBehaviour:
   <Range>k__BackingField: 2.5
   <IsInteractable>k__BackingField: 1
   <IconGraphics>k__BackingField: {fileID: 11400000, guid: ce7f8c7360bd66e43973894a11098ec7, type: 2}
-  <DisplayObject>k__BackingField: {fileID: 1104436657142264947, guid: 069bab889e99b954298cefa3231e07b6, type: 3}
-  <OnPickup>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  <OnDrop>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
+  <BaseDisplayObject>k__BackingField: {fileID: 1104436657142264947, guid: 069bab889e99b954298cefa3231e07b6, type: 3}
 --- !u!135 &3971931297588789626
 SphereCollider:
   m_ObjectHideFlags: 0

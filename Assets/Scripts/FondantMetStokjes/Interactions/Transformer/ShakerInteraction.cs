@@ -1,3 +1,4 @@
+using FondantMetStokjes.Interactions.Pickups;
 using FondantMetStokjes.InteractionSystem;
 using FondantMetStokjes.Player;
 using UnityEngine;
@@ -38,7 +39,6 @@ public class ShakerInteraction : Interactable
             return;
         Ps4Controller controller = CurrentInteractor.Controller;
         float JoystickY = controller.RightStick.y;
-        Debug.Log(JoystickY);
         
         if (state != State.Down && JoystickY <= -upDownZone)
         {
@@ -66,9 +66,7 @@ public class ShakerInteraction : Interactable
         if (sideChanges >= sideChangesBeforeWin)
         {
             bubble.SwitchKind(bubbleKind);
-            bool gaveBubble = CurrentInteractor.TryGiveBubble(bubble);
-            if (!gaveBubble)
-                return;
+            CurrentInteractor.GiveBubble(bubble);
             EndInteraction();
         }
     }

@@ -23,19 +23,15 @@ public class LiveBubble : MonoBehaviour
         rend.sharedMaterial = bubbelMat;
         rend.transform.localScale = Kind.Scale;
         bubbelMat.SetColor(Tint, Kind.Tint);
-    }
-
-    private void OnEnable()
-    {
         pickup = GetComponent<Pickup>();
-        pickup.OnPickup.AddListener(OnPickup);
-        pickup.OnDrop.AddListener(OnDrop);
+        pickup.OnPickup += OnPickup;
+        pickup.OnDrop += OnDrop;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        pickup.OnPickup.RemoveListener(OnPickup);
-        pickup.OnDrop.RemoveListener(OnDrop);
+        pickup.OnPickup -= OnPickup;
+        pickup.OnDrop -= OnDrop;
     }
 
     public void SwitchKind(BubbleKind newKind)
@@ -43,7 +39,6 @@ public class LiveBubble : MonoBehaviour
         Kind = newKind;
         rend.transform.localScale = Kind.Scale;
         bubbelMat.SetColor(Tint, Kind.Tint);
-        pickup.ResetDisplay();
     }
     
     private void OnDrop()
@@ -52,8 +47,10 @@ public class LiveBubble : MonoBehaviour
         pickup.Range = 1.5f;
     }
 
+    private Transform currentDisplay;
     private void OnPickup(Transform display)
     {
+        currentDisplay = display;
         display.localScale = Kind.Scale;
         display.GetComponent<Renderer>().sharedMaterial = bubbelMat;
     }
