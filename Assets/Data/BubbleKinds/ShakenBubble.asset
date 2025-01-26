@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Shaken Bubble
   <Icon>k__BackingField: {fileID: 0}
-  <Tint>k__BackingField: {r: 1, g: 0, b: 0.5227928, a: 1}
+  <Tint>k__BackingField: {r: 0.6118307, g: 0, b: 1, a: 1}
   <Scale>k__BackingField: {x: 0.75, y: 1, z: 0.75}

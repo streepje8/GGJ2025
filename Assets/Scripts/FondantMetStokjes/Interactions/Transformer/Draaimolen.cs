@@ -34,7 +34,7 @@ public class Draaimolen : Interactable
         if (CurrentInteractor == null) return;
         var input = CurrentInteractor.Controller.RightStick.normalized;
         var angle = Vector2.SignedAngle(input, lastJoystick);
-        if (angle is > 2f and < 10f)
+        if (angle > 2f)
         {
             turningCooldown = 0.2f;
             lastJoystick = input;

@@ -44,9 +44,11 @@ public class FlattenerInteraction : Interactable
         var controller = CurrentInteractor.Controller;
         if (state == FlattenerState.Base)
         {
+            trafficLight.speed = 99999;
             if (controller.RightStick.y < -0.4f)
             {
                 squisher.SetTrigger(Up);
+                trafficLight.speed = 1;
                 trafficLight.SetTrigger(Go);
                 state = FlattenerState.Up;
                 timer = 0f;
