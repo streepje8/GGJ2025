@@ -6,7 +6,7 @@ public class SpawnBubbleLever : Interactable
 {
     private static readonly int Lever = Animator.StringToHash("Lever");
     [field: SerializeField]public GameObject LiveBubblePrefab { get; private set; }
-    public override ControllerButton InteractionStartButton => ControllerButton.Circle;
+    //public override ControllerButton InteractionStartButton => ControllerButton.Circle;
 
     [field: SerializeField] public Transform BuldgePoint { get; private set; }
     [field: SerializeField] public AnimationCurve BuldgeCurve { get; private set; }

@@ -37,6 +37,11 @@ namespace FondantMetStokjes.Player
             CurrentController.SetInput(ControllerButton.Triangle, triangle.ReadValue<float>() > 0);
             CurrentController.SetInput(ControllerButton.Circle, circle.ReadValue<float>() > 0);
         }
+
+        private void LateUpdate()
+        {
+            CurrentController.Update();
+        }
     }
 
     public enum ControllerButton
@@ -135,6 +140,14 @@ namespace FondantMetStokjes.Player
             }
         }
 
+
+        private bool LeftStickPressedQueue = false;
+        private bool RightStickPressedQueue = false;
+        private bool SquarePressedQueue = false;
+        private bool TrianglePressedQueue = false;
+        private bool CirclePressedQueue = false;
+        private bool CrossPressedQueue = false;
+        
         public bool GetButtonPressed(ControllerButton button)
         {
             var current = GetButton(button);
@@ -145,7 +158,7 @@ namespace FondantMetStokjes.Player
                     {
                         if (!LeftStickWasPressed)
                         {
-                            LeftStickWasPressed = true;
+                            LeftStickPressedQueue = true;
                             return true;
                         }
                     }
@@ -155,7 +168,7 @@ namespace FondantMetStokjes.Player
                     {
                         if (!RightStickWasPressed)
                         {
-                            RightStickWasPressed = true;
+                            RightStickPressedQueue = true;
                             return true;
                         }
                     }
@@ -165,7 +178,7 @@ namespace FondantMetStokjes.Player
                     {
                         if (!TriangleWasPressed)
                         {
-                            TriangleWasPressed = true;
+                            TrianglePressedQueue = true;
                             return true;
                         }
                     }
@@ -175,7 +188,7 @@ namespace FondantMetStokjes.Player
                     {
                         if (!CircleWasPressed)
                         {
-                            CircleWasPressed = true;
+                            CirclePressedQueue = true;
                             return true;
                         }
                     }
@@ -185,7 +198,7 @@ namespace FondantMetStokjes.Player
                     {
                         if (!CrossWasPressed)
                         {
-                            CrossWasPressed = true;
+                            CrossPressedQueue = true;
                             return true;
                         }
                     }
@@ -195,13 +208,47 @@ namespace FondantMetStokjes.Player
                     {
                         if (!SquareWasPressed)
                         {
-                            SquareWasPressed = true;
+                            SquarePressedQueue = true;
                             return true;
                         }
                     }
                     return false;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(button), button, null);
+            }
+        }
+
+        public void Update()
+        {
+            if (LeftStickPressedQueue)
+            {
+                LeftStickWasPressed = true;
+                LeftStickPressedQueue = false;
+            }
+            if (RightStickPressedQueue)
+            {
+                RightStickWasPressed = true;
+                RightStickPressedQueue = false;
+            }
+            if (SquarePressedQueue)
+            {
+                SquareWasPressed = true;
+                SquarePressedQueue = false;
+            }
+            if (CirclePressedQueue)
+            {
+                CircleWasPressed = true;
+                CirclePressedQueue = false;
+            }
+            if (TrianglePressedQueue)
+            {
+                TriangleWasPressed = true;
+                TrianglePressedQueue = false;
+            }
+            if (CrossPressedQueue)
+            {
+                CrossWasPressed = true;
+                CrossPressedQueue = false;
             }
         }
     }

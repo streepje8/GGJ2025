@@ -72,4 +72,10 @@ public class LiveBubble : MonoBehaviour
     {
         IsImmortal = true;
     }
+
+    public void ToRenderer(MeshRenderer display)
+    {
+        display.transform.localScale = Kind.Scale;
+        display.sharedMaterial = bubbelMat;
+    }
 }
