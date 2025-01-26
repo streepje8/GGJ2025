@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     private void NextWave()
     {
         GameState.Wave++;
+        Debug.Log($"Starting wave: {GameState.Wave}");
         if (WaveContainer.Waves.Count >= GameState.Wave)
         {
             SendWave(WaveContainer.Waves[GameState.Wave - 1]);
@@ -94,12 +95,13 @@ public class GameManager : MonoBehaviour
                 });
             }
         }
+        if(afterWave != null) afterWave();
         yield return null;
     }
 
     private bool AllBubblesBeat()
     {
-        return false;
+        return RequestManager.ActiveRequests.Count < 1;
     }
 
     private float GetMaxTime(int difficulty)

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Request : MonoBehaviour
 {
+    private static readonly int Progress = Shader.PropertyToID("_Progress");
     public RawImage bubbleIcon;
     public RawImage background;
     public float duration;
@@ -15,9 +16,12 @@ public class Request : MonoBehaviour
         bubbleIcon.color = Kind.Tint;
     }
 
+    private Material mat;
     public void Activate()
     {
         t = 0;
+        mat = new Material(background.material);
+        background.material = mat;
         switch (GameManager.Instance.GameState.Difficulty)
         {
             case < 2:
@@ -38,5 +42,6 @@ public class Request : MonoBehaviour
     private void Update()
     {
         t += Time.deltaTime / duration;
+        mat.SetFloat(Progress,t);
     }
 }
