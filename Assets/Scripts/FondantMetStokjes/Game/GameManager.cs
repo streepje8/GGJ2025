@@ -145,7 +145,7 @@ public class RequestManager
     public void ClearRequest(BubbleKind kind)
     {
         Request toDelete = null;
-        float earliest = float.MaxValue;
+        float earliest = -1;
         for (var i = ActiveRequests.Count - 1; i >= 0; i--)
         {
             var req = ActiveRequests[i];
