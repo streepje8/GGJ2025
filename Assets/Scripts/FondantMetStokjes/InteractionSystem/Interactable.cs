@@ -5,10 +5,13 @@ namespace FondantMetStokjes.InteractionSystem
 {
     public abstract class Interactable : MonoBehaviour
     {
+        private const float glowAmount = 10.0f;
         [field: Header("Interactable Settings")]
         [field: SerializeField] public float Range { get; set; } = 10f;
         [field: SerializeField] public bool IsInteractable { get; set; } = true;
         [field: SerializeField] public IconGraphicData IconGraphics { get; protected set; }
+        [field: SerializeField] public Renderer Renderer { get; protected set; }
+        
     
         public virtual ControllerButton InteractionStartButton { get; } = ControllerButton.Cross;
         public abstract void OnInteract(Interactor interactor);
@@ -17,6 +20,7 @@ namespace FondantMetStokjes.InteractionSystem
         public virtual void OnExitRange() { }
 
         public bool InRange { get; private set; } = false;
+        private Material[] materials;
         private float inRangeTimer = 0.2f;
         private float graphicT = 0;
         private bool graphicEnabled = false;
@@ -30,6 +34,15 @@ namespace FondantMetStokjes.InteractionSystem
                 graphicGameObj.transform.SetParent(transform);
                 IconGraphics.ApplyVisual(graphicGameObj, InteractionStartButton);
             }
+
+            if (Renderer != null)
+            {
+                for (int i = 0; i < Renderer.materials.Length; i++)
+                {
+                    Renderer.materials[i] = new Material(Renderer.materials[i]);
+                }
+                materials = Renderer.materials;
+            }
         }
 
         private void Update()
@@ -38,6 +51,13 @@ namespace FondantMetStokjes.InteractionSystem
             {
                 if (InRange)
                 {
+                    if (materials != null)
+                    {
+                        foreach (Material material in materials)
+                        {
+                            material.SetFloat("_Glow", glowAmount);
+                        }
+                    }
                     inRangeTimer -= Time.deltaTime;
                     if (inRangeTimer <= 0)
                     {
@@ -53,6 +73,13 @@ namespace FondantMetStokjes.InteractionSystem
                 }
                 else
                 {
+                    if (materials != null)
+                    {
+                        foreach (Material material in materials)
+                        {
+                            material.SetFloat("_Glow", 0);
+                        }
+                    }
                     if (graphicT > 0)
                     {
                         graphicT -= Time.deltaTime / IconGraphics.AnimationDuration;
