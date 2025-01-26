@@ -9,10 +9,12 @@ public class MagnoInteraction : Interactable
 {
     private static readonly int Idle = Animator.StringToHash("Idle");
     private static readonly int Animate = Animator.StringToHash("Door");
+    private static readonly int Jump = Animator.StringToHash("Jump");
+    private static readonly int MessUp = Animator.StringToHash("MessUp");
     public Animator animator;
     public float closingDoorTime = 0.5f;
     public float waitTime = 10.0f;
-    public float timeBeforeBad = 5.0f;
+    public float timeBeforeBad = 10.0f;
     public BubbleKind bubbleKindDone;
     public BubbleKind bubbleKindMessedUp;
     private LiveBubble bubble = null;
@@ -39,6 +41,7 @@ public class MagnoInteraction : Interactable
                 bool tookBubble = interactor.TryTakeBubble(out bubble);
                 if (!tookBubble)
                     return;
+                time = 0;
                 state = State.Closing;
                 StartInteraction(interactor);
                 animator.Play(Animate);
@@ -67,7 +70,6 @@ public class MagnoInteraction : Interactable
 
     public override void InteractableUpdate()
     {
-        Debug.Log(bubble);
         switch (state)
         {
             case State.Idle:
@@ -77,7 +79,6 @@ public class MagnoInteraction : Interactable
                 if (time >= closingDoorTime)
                 {
                     state = State.Waiting;
-                    Debug.Log("Door closed!");
                     EndInteraction();
                 }
                 break;
@@ -86,7 +87,7 @@ public class MagnoInteraction : Interactable
                 if (time >= closingDoorTime + waitTime)
                 {
                     state = State.Done;
-                    Debug.Log("Magno done!");
+                    animator.Play(Jump);
                 }
                 break;
             case State.Done:
@@ -94,7 +95,7 @@ public class MagnoInteraction : Interactable
                 if (time >= closingDoorTime + waitTime + timeBeforeBad)
                 {
                     state = State.MessedUp;
-                    Debug.Log("Messed up the magno!");
+                    animator.Play(MessUp);
                 }
                 break;
             case State.MessedUp:

@@ -59,7 +59,7 @@ namespace FondantMetStokjes.InteractionSystem
                         var dst = Vector3.Distance(interactable.transform.position, transform.position);
                         if (dst < interactable.Range)
                         {
-                            interactable.SetInRange();
+                            interactable.SetInRange(inventory.IsHoldingSomething);
                             if(input.GetButtonPressed(interactable.InteractionStartButton))interactable.OnInteract(this);
                         }
                     }

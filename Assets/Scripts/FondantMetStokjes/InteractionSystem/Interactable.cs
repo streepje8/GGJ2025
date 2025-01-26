@@ -11,8 +11,9 @@ namespace FondantMetStokjes.InteractionSystem
         [field: SerializeField] public bool IsInteractable { get; set; } = true;
         [field: SerializeField] public IconGraphicData IconGraphics { get; protected set; }
         [field: SerializeField] public Renderer Renderer { get; protected set; }
-        
-    
+        [field: SerializeField] public bool RequireBubble { get; set; }
+
+
         public virtual ControllerButton InteractionStartButton { get; } = ControllerButton.Cross;
         public abstract void OnInteract(Interactor interactor);
 
@@ -51,6 +52,7 @@ namespace FondantMetStokjes.InteractionSystem
             {
                 if (InRange)
                 {
+                    
                     if (materials != null)
                     {
                         foreach (Material material in materials)
@@ -124,8 +126,10 @@ namespace FondantMetStokjes.InteractionSystem
             Gizmos.DrawWireSphere(transform.position, Range);
         }
     
-        public void SetInRange()
+        public void SetInRange(bool hasBubble)
         {
+            if (!hasBubble && RequireBubble)
+                return;
             if (!InRange)
             {
                 OnEnterRange();
