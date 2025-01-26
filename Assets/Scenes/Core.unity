@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 03209079edd57f14b8db608b8721d507, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1637,6 +1637,7 @@ MonoBehaviour:
   <Range>k__BackingField: 2
   <IsInteractable>k__BackingField: 1
   <IconGraphics>k__BackingField: {fileID: 11400000, guid: ce7f8c7360bd66e43973894a11098ec7, type: 2}
+  <Renderer>k__BackingField: {fileID: 0}
   <BuldgePoint>k__BackingField: {fileID: 918603130}
   <BuldgeCurve>k__BackingField:
     serializedVersion: 2
@@ -2570,6 +2571,7 @@ MonoBehaviour:
   <Range>k__BackingField: 2
   <IsInteractable>k__BackingField: 1
   <IconGraphics>k__BackingField: {fileID: 11400000, guid: ce7f8c7360bd66e43973894a11098ec7, type: 2}
+  <Renderer>k__BackingField: {fileID: 0}
   <LiveBubblePrefab>k__BackingField: {fileID: 3503822067844120716, guid: ab67d504dbf38744290f9061726c9c0a, type: 3}
   <BuldgePoint>k__BackingField: {fileID: 66566141}
   <BuldgeCurve>k__BackingField:
@@ -2682,7 +2684,7 @@ RectTransform:
   m_GameObject: {fileID: 1589247476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 13.75}
-  m_LocalScale: {x: 0.010187533, y: 0.010187533, z: 0.010187533}
+  m_LocalScale: {x: 0.02258549, y: 0.02258549, z: 0.02258549}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 44662475}
@@ -2690,8 +2692,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 6.99}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 0, y: 4.5}
+  m_SizeDelta: {x: 2048, y: 655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1589247478
 MonoBehaviour:
@@ -3413,6 +3415,7 @@ MonoBehaviour:
   <Range>k__BackingField: 2
   <IsInteractable>k__BackingField: 1
   <IconGraphics>k__BackingField: {fileID: 11400000, guid: ce7f8c7360bd66e43973894a11098ec7, type: 2}
+  <Renderer>k__BackingField: {fileID: 0}
   model: {fileID: 919132149103888354}
   sideChangesBeforeWin: 20
   permanentLmaoSpeedMod: 0.1
