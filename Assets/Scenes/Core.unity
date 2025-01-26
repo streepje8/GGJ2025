@@ -737,6 +737,7 @@ MonoBehaviour:
   displayModel: {fileID: 5277914001771173676, guid: 069bab889e99b954298cefa3231e07b6, type: 3}
   spinnedKind: {fileID: 11400000, guid: 9b8a519e7bb4fff4ab50d2ee2c6aec61, type: 2}
   bone: {fileID: 1434325143226704764}
+  boneMirror: {fileID: 1698200595}
   spinningTime: 2
 --- !u!1 &226018156
 GameObject:
@@ -3669,6 +3670,37 @@ Transform:
   - {fileID: 1712946748}
   m_Father: {fileID: 998449694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1698200594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1698200595}
+  m_Layer: 0
+  m_Name: Maow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1698200595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698200594}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2618892697220594734}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1712946747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5620,6 +5652,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4875309619674320180}
+  - {fileID: 1698200595}
   - {fileID: 4298895729783793637}
   m_Father: {fileID: 1794925234}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
