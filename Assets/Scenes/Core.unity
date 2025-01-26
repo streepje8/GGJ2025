@@ -2613,7 +2613,7 @@ MonoBehaviour:
     volume: 1
   animator: {fileID: 785987023}
   closingDoorTime: 0.5
-  waitTime: 10
+  waitTime: 5
   timeBeforeBad: 6
   bubbleKindDone: {fileID: 11400000, guid: 4f843dd0e6b85b9498135161eff7c6e2, type: 2}
   bubbleKindMessedUp: {fileID: 11400000, guid: 267f434d740c23048ad64223508eb147, type: 2}
