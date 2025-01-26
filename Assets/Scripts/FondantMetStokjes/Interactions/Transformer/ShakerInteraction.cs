@@ -1,4 +1,3 @@
-using FondantMetStokjes.Interactions.Pickups;
 using FondantMetStokjes.InteractionSystem;
 using FondantMetStokjes.Player;
 using UnityEngine;
