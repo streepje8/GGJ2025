@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
 
     private float GetMaxTime(int difficulty)
     {
-        return 20.0f/(float)(difficulty+1);
+        return 60.0f/(float)(difficulty+1);
     }
 
     private void HonourRequest(BubbleKind request)
