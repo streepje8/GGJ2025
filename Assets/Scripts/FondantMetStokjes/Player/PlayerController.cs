@@ -12,6 +12,7 @@ namespace FondantMetStokjes.Player
         [field: SerializeField] public float MaxSpeed { get; private set; } = 10f;
         [field: SerializeField] public float Acceleration { get; private set; } = 10f;
         [field: SerializeField] public float Deceleration { get; private set; } = 10f;
+        [field: SerializeField] public float RotationSmoothing { get; private set; } = 10f;
         [field: SerializeField] public bool ConserveMomentum { get; private set; } = true;
         [field: SerializeField] public LayerMask Ground { get; private set; }
         [field: SerializeField] public float DistanceFromGround { get; private set; } = 0.1f;
@@ -39,7 +40,8 @@ namespace FondantMetStokjes.Player
                 {
                     var forward = new Vector3(input.LeftStick.x, 0, input.LeftStick.y).normalized;
                     var rotationGoal = Quaternion.LookRotation(forward, Vector3.up);
-                    transform.rotation = Quaternion.Euler(0,rotationGoal.eulerAngles.y, 0);
+                    var targetRotation = Quaternion.Euler(0, rotationGoal.eulerAngles.y, 0);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSmoothing * Time.deltaTime);
                 }
                 Vector3 targetSpeed = new Vector3(input.LeftStick.x, 0, input.LeftStick.y) * MaxSpeed;
                 Vector3 speedDifference = targetSpeed - new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, rb.linearVelocity.z);
