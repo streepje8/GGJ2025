@@ -7,6 +7,7 @@ public class Draaimolen : Interactable
     public BubbleKind spinnedKind;
     public Transform bone;
     public Transform boneMirror;
+    public SfxClip squeak;
     public float spinningTime = 2f;
     private float turningCooldown = 0.2f;
     private float totalTimer = 0f;
@@ -37,6 +38,7 @@ public class Draaimolen : Interactable
         {
             turningCooldown = 0.2f;
             lastJoystick = input;
+            SfxManager.instance.SpawnSound(squeak, transform.position);
         }
         
         if (turningCooldown > 0)

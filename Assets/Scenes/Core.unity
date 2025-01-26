@@ -738,6 +738,9 @@ MonoBehaviour:
   spinnedKind: {fileID: 11400000, guid: 9b8a519e7bb4fff4ab50d2ee2c6aec61, type: 2}
   bone: {fileID: 1434325143226704764}
   boneMirror: {fileID: 1698200595}
+  squeak:
+    clip: {fileID: 8300000, guid: d6bc2349ed257ec4e9cf043b8d67be98, type: 3}
+    volume: 0.3
   spinningTime: 2
 --- !u!1 &226018156
 GameObject:
