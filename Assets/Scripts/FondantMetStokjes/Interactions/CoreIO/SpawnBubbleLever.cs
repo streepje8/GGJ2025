@@ -14,9 +14,12 @@ public class SpawnBubbleLever : Interactable
     [field: SerializeField] public Transform PointB { get; private set; }
     [field: SerializeField] public Transform PointC { get; private set; }
     [field: SerializeField] public Transform PointD { get; private set; }
+    [field: SerializeField] public SfxClip useClip;
+    [field: SerializeField] public SfxClip shwoopClip;
     [field: SerializeField] public Transform BubbleSpawnPoint { get; private set; }
     [field: SerializeField] public Animator LeverAnimator { get; private set; }
     [field: SerializeField] public float Duration { get; private set; } = 2f;
+    private bool shwooped = false;
     private bool isPlaying = false;
     private float T = 0f;
     private Transform lastSpawnedBubble;
@@ -27,6 +30,8 @@ public class SpawnBubbleLever : Interactable
             StartInteraction(interactor);
             LeverAnimator.SetTrigger(Lever);
             isPlaying = true;
+            shwooped = false;
+            SfxManager.instance.SpawnSound(useClip, transform.position);
             T = 0f;
             if (lastSpawnedBubble != null)
             {
@@ -60,6 +65,11 @@ public class SpawnBubbleLever : Interactable
                     break;
                 case > 2.0f / 3.0f and <= 1.0f:
                 {
+                    if (!shwooped)
+                    {
+                        shwooped = true;
+                        SfxManager.instance.SpawnSound(shwoopClip, transform.position);
+                    }
                     var localT = BuldgeCurve.Evaluate(Mathf.InverseLerp(2f/3f, 1.0f, T));
                     BuldgePoint.position = Vector3.Lerp(PointC.position, PointD.position, localT);
                 }

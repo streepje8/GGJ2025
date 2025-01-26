@@ -14,5 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Waves>k__BackingField:
   - {fileID: 11400000, guid: 80ef2cb1f319a0a4dbf0edd75287998a, type: 2}
-  - {fileID: 11400000, guid: 7948c0ebfea59e54d975699034d857ee, type: 2}
-  - {fileID: 11400000, guid: 87eac9b633cced741a15205c1db923ea, type: 2}
+  - {fileID: 11400000, guid: 2dc76707e564d1d4b86aec33ed210120, type: 2}
+  - {fileID: 11400000, guid: e2d3ea5b3b940bb4fa80b3d813a80ba0, type: 2}
+  - {fileID: 11400000, guid: bf7526f37b54bc2469f7f44697e4d067, type: 2}
+  - {fileID: 11400000, guid: 75a7ae010a717104a9590049efe89bbe, type: 2}
+  - {fileID: 11400000, guid: cf70e3870895c324e996e685b7ee1cab, type: 2}
+  - {fileID: 11400000, guid: 6f43e5f13ae76a64e8ac1917be46d7b3, type: 2}
+  - {fileID: 11400000, guid: efaa6c603465ddd48a402ea84e951781, type: 2}
+  - {fileID: 11400000, guid: 4ed7c3f0e654af84e8dd6c8ba603bbb6, type: 2}
+  - {fileID: 11400000, guid: 154a14eec1dffaf4d9e1c558ffb29218, type: 2}

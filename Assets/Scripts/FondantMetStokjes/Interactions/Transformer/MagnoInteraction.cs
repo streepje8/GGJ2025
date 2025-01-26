@@ -11,6 +11,11 @@ public class MagnoInteraction : Interactable
     private static readonly int Animate = Animator.StringToHash("Door");
     private static readonly int Jump = Animator.StringToHash("Jump");
     private static readonly int MessUp = Animator.StringToHash("MessUp");
+    public SfxClip doorCloseSound;
+    public SfxClip doorOpenSound;
+    public SfxClip humSound;
+    public SfxClip doneSound;
+    public SfxClip messUpSound;
     public Animator animator;
     public float closingDoorTime = 0.5f;
     public float waitTime = 10.0f;
@@ -43,6 +48,7 @@ public class MagnoInteraction : Interactable
                     return;
                 time = 0;
                 state = State.Closing;
+                SfxManager.instance.SpawnSound(doorCloseSound, transform.position);
                 StartInteraction(interactor);
                 animator.Play(Animate);
             }
@@ -52,18 +58,20 @@ public class MagnoInteraction : Interactable
             case State.Waiting:
                 break;
             case State.Done:
-                bubble.SwitchKind(bubbleKindDone);
                 StartInteraction(interactor);
+                bubble.SwitchKind(bubbleKindDone);
                 CurrentInteractor.GiveBubble(bubble);
                 EndInteraction();
                 state = State.Idle;
+                SfxManager.instance.SpawnSound(doorOpenSound, transform.position);
                 break;
             case State.MessedUp:
-                bubble.SwitchKind(bubbleKindMessedUp);
                 StartInteraction(interactor);
+                bubble.SwitchKind(bubbleKindMessedUp);
                 CurrentInteractor.GiveBubble(bubble);
                 EndInteraction();
                 state = State.Idle;
+                SfxManager.instance.SpawnSound(doorOpenSound, transform.position);
                 break;
         }
     }
@@ -80,6 +88,7 @@ public class MagnoInteraction : Interactable
                 {
                     state = State.Waiting;
                     EndInteraction();
+                    SfxManager.instance.SpawnSound(humSound, transform.position);
                 }
                 break;
             case State.Waiting:
@@ -88,6 +97,8 @@ public class MagnoInteraction : Interactable
                 {
                     state = State.Done;
                     animator.Play(Jump);
+                    
+                    SfxManager.instance.SpawnSound(doneSound, transform.position);
                 }
                 break;
             case State.Done:
@@ -96,6 +107,7 @@ public class MagnoInteraction : Interactable
                 {
                     state = State.MessedUp;
                     animator.Play(MessUp);
+                    SfxManager.instance.SpawnSound(messUpSound, transform.position);
                 }
                 break;
             case State.MessedUp:
