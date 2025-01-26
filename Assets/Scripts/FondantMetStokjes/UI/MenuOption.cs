@@ -17,6 +17,7 @@ public class MenuOption : MonoBehaviour
         switch (Option)
         {
             case MenuOptions.Play:
+                GameManager.Instance.SwitchToGame();
                 GameManager.Instance.NewGame();
                 GameManager.Instance.StartGame();
                 break;

@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 using Random = System.Random;
 
 public class GameManager : MonoBehaviour
@@ -9,12 +11,32 @@ public class GameManager : MonoBehaviour
     public GameState GameState { get; private set; } = new GameState();
     public RequestManager RequestManager { get; private set; } = new RequestManager();
     [field: SerializeField] public BubbleWaves WaveContainer { get; private set; }
+    [field: SerializeField] public GameObject RequestPrefab { get; private set; }
+    [field: SerializeField] public Transform RequestPrefabParent { get; private set; }
     public static GameManager Instance { get; private set; }
+    public int playerCount { get; private set; } = 0;
     private void Awake()
     {
         Instance = this;
+        PlayerIDs.Enqueue(1);
+        PlayerIDs.Enqueue(2);
+        PlayerIDs.Enqueue(3);
+        PlayerIDs.Enqueue(4);
     }
 
+    public Queue<int> PlayerIDs { get; private set; } = new Queue<int>();
+    public void JoinPlayer(PlayerInput player)
+    {
+        player.GetComponent<PlayerIdentifier>().SetID(PlayerIDs.Dequeue());
+        playerCount++;
+    }
+
+    public void LeavePlayer(PlayerInput player)
+    {
+        PlayerIDs.Enqueue(player.GetComponent<PlayerIdentifier>().GetID());
+        playerCount--;
+    }
+    
     public void NewGame()
     {
         GameState.Time = 0;
@@ -29,12 +51,17 @@ public class GameManager : MonoBehaviour
         NextWave();
     }
 
+    public Request InstantiateRequest()
+    {
+        return Instantiate(RequestPrefab, RequestPrefabParent).GetComponent<Request>();
+    }
+
     private void NextWave()
     {
         GameState.Wave++;
         if (WaveContainer.Waves.Count >= GameState.Wave)
         {
-            SendWave(WaveContainer.Waves[GameState.Wave]);
+            SendWave(WaveContainer.Waves[GameState.Wave - 1]);
         }
     }
 
@@ -87,7 +114,15 @@ public class GameManager : MonoBehaviour
 
     public void SubmitBubble(BubbleKind kind)
     {
-        Debug.Log($"Submitted: {kind.Name}");
+        RequestManager.ClearRequest(kind);
+    }
+
+    public GameObject Game;
+    public GameObject MainMenu;
+    public void SwitchToGame()
+    {
+        Game.SetActive(true);
+        MainMenu.SetActive(false);
     }
 }
 
@@ -104,21 +139,38 @@ public class RequestManager
 
     private Request CreateRequest()
     {
-        throw new NotImplementedException();
+        return GameManager.Instance.InstantiateRequest();
+    }
+
+    public void ClearRequest(BubbleKind kind)
+    {
+        Request toDelete = null;
+        float earliest = float.MaxValue;
+        for (var i = ActiveRequests.Count - 1; i >= 0; i--)
+        {
+            var req = ActiveRequests[i];
+            if (req.Kind == kind)
+            {
+                if (req.t > earliest)
+                {
+                    earliest = req.t;
+                    toDelete = req;
+                }
+            }
+        }
+
+        if (toDelete != null)
+        {
+            ActiveRequests.Remove(toDelete);
+            Object.Destroy(toDelete.gameObject);
+            Debug.Log("100 Points.");
+            //Award 100 Points
+        }
+        else
+        {
+            Debug.Log("5 Points.");
+            //Award 5 Points.
+        }
     }
 }
 
-public class Request : MonoBehaviour
-{
-    public BubbleKind Kind { get; set; }
-
-    public void BindToRequest(BubbleKind request)
-    {
-        Kind = request;
-    }
-
-    public void Activate()
-    {
-        throw new NotImplementedException();
-    }
-}

@@ -36,10 +36,10 @@ public class SendBubbleLever : Interactable
                     {
                         isPlaying = true;
                         T = 0f;
-                    }
-                }
-            }
-        }
+                    } else EndInteraction();
+                } else EndInteraction();
+            } else EndInteraction();
+        } else EndInteraction();
     }
 
     public override void InteractableUpdate()

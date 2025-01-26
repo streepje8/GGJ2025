@@ -1,7 +1,6 @@
 using System;
 using FondantMetStokjes.InteractionSystem;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace FondantMetStokjes.Interactions.Pickups
 {
