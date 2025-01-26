@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FondantMetStokjes.Music;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
         if (WaveContainer.Waves.Count >= GameState.Wave)
         {
             SendWave(WaveContainer.Waves[GameState.Wave - 1]);
+            MusicManager.instance.AdvanceMusic();
         }
     }
 
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour
                 });
             }
         }
+        yield return new WaitUntil(() => AllBubblesBeat());
         if(afterWave != null) afterWave();
         yield return null;
     }
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour
 
     private float GetMaxTime(int difficulty)
     {
-        return 20/(float)(difficulty+1);
+        return 20.0f/(float)(difficulty+1);
     }
 
     private void HonourRequest(BubbleKind request)

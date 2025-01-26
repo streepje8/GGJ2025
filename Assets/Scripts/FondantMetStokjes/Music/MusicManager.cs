@@ -15,10 +15,18 @@ namespace FondantMetStokjes.Music
     
     public class MusicManager : MonoBehaviour
     {
+        public static MusicManager instance;
         public float volumeFadeSpeed = 1.0f;
         [SerializeField] Stem[] stems;
         private int stage = 0;
         private int previousSource0Time = 0;
+
+        void Awake()
+        {
+            if (instance != null && instance != this)
+                Destroy(instance.gameObject);
+            instance = this;
+        }
         
         void Start()
         {

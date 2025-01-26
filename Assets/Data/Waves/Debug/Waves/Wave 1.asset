@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6c79094641a4921bf83d88d6067daa6, type: 3}
-  m_Name: WaveTwo
+  m_Name: Wave 1
   m_EditorClassIdentifier: 
   <Requests>k__BackingField:
-  - {fileID: 11400000, guid: f1489f848d125114babe04ffc4963729, type: 2}
   - {fileID: 11400000, guid: df6b1a8d0ed8616488eabdf78d0e8433, type: 2}
+  - {fileID: 11400000, guid: 4f843dd0e6b85b9498135161eff7c6e2, type: 2}
   - {fileID: 11400000, guid: df6b1a8d0ed8616488eabdf78d0e8433, type: 2}
-  - {fileID: 11400000, guid: df6b1a8d0ed8616488eabdf78d0e8433, type: 2}
-  - {fileID: 11400000, guid: f1489f848d125114babe04ffc4963729, type: 2}
   - {fileID: 11400000, guid: 90ae5a711af76a2418722a5e825e464d, type: 2}
