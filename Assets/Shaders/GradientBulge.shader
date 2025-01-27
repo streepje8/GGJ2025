@@ -37,17 +37,12 @@ Shader "GGJ/GradientLightingBulge"
 
             TEXTURE2D(_Gradient);
             SAMPLER(sampler_Gradient);
-
-            CBUFFER_START(UnityPerDraw)
-                unity_ObjectToWorld;
-            CBUFFER_END
             
             CBUFFER_START(UnityPerMaterial)
                 float4 _Gradient_ST;
                 float3 _BulgePositionA;
                 float3 _BulgePositionB;
                 float _BulgeAmount;
-                float _BulgeDistance;
                 float _MinBulgeDistance;
                 float _MaxBulgeDistance;
             CBUFFER_END

@@ -37,7 +37,6 @@ GraphicsSettings:
   - {fileID: 4800000, guid: 29d68dac9d1f52b4dac1d8f8a1ca0c09, type: 3}
   - {fileID: 4800000, guid: 78a8f794689266c4b991f81df0dc29ab, type: 3}
   - {fileID: 4800000, guid: 28b55c6da51c80f4d8d79e00e80e985e, type: 3}
-  - {fileID: 4800000, guid: afc71d513119bb544b61270527b46bbe, type: 3}
   - {fileID: 4800000, guid: 654a533fa8114d94d8c1bbf6d52fa012, type: 3}
   m_PreloadedShaders: []
   m_PreloadShadersBatchTimeLimit: -1
@@ -48,25 +47,25 @@ GraphicsSettings:
   m_DefaultRenderingPath: 1
   m_DefaultMobileRenderingPath: 1
   m_TierSettings: []
-  m_LightmapStripping: 0
-  m_FogStripping: 0
+  m_LightmapStripping: 1
+  m_FogStripping: 1
   m_InstancingStripping: 0
   m_BrgStripping: 0
-  m_LightmapKeepPlain: 1
+  m_LightmapKeepPlain: 0
   m_LightmapKeepDirCombined: 1
-  m_LightmapKeepDynamicPlain: 1
-  m_LightmapKeepDynamicDirCombined: 1
-  m_LightmapKeepShadowMask: 1
-  m_LightmapKeepSubtractive: 1
-  m_FogKeepLinear: 1
-  m_FogKeepExp: 1
-  m_FogKeepExp2: 1
+  m_LightmapKeepDynamicPlain: 0
+  m_LightmapKeepDynamicDirCombined: 0
+  m_LightmapKeepShadowMask: 0
+  m_LightmapKeepSubtractive: 0
+  m_FogKeepLinear: 0
+  m_FogKeepExp: 0
+  m_FogKeepExp2: 0
   m_AlbedoSwatchInfos: []
   m_RenderPipelineGlobalSettingsMap:
     UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 18dc0cd2c080841dea60987a38ce93fa, type: 2}
   m_LightsUseLinearIntensity: 1
   m_LightsUseColorTemperature: 1
-  m_LogWhenShaderIsCompiled: 0
+  m_LogWhenShaderIsCompiled: 1
   m_LightProbeOutsideHullStrategy: 0
   m_CameraRelativeLightCulling: 0
   m_CameraRelativeShadowCulling: 0
