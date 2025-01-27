@@ -37,10 +37,10 @@ Shader "GGJ/GradientLighting"
 
             TEXTURE2D(_Gradient);
             SAMPLER(sampler_Gradient);
-            float _Glow;
 
             CBUFFER_START(UnityPerMaterial)
                 float4 _Gradient_ST;
+                float _Glow;
             CBUFFER_END
 
             Varyings vert(Attributes i)
